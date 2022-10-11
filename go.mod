@@ -1,4 +1,4 @@
-module github.com/rgattas-meli/desafio-goweb-robertogattas/desafio-go-web-master
+module github.com/rgattas-meli/desafio-goweb-robertogattas
 
 go 1.19
 

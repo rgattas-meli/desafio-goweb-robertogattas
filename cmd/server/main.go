@@ -6,10 +6,9 @@ import (
 	"fmt"
 	"os"
 	"strconv"
-	"github.com/rgattas-meli/desafio-goweb-robertogattas/desafio-go-web-master/pkg/domain"
-	"github.com/rgattas-meli/desafio-goweb-robertogattas/desafio-go-web-master/cmd/server/handler"
-
-	"github.com/rgattas-meli/desafio-goweb-robertogattas/desafio-go-web-master/internal/products"
+	"github.com/rgattas-meli/desafio-goweb-robertogattas/pkg/domain"
+	"github.com/rgattas-meli/desafio-goweb-robertogattas/cmd/server/handler"
+	"github.com/rgattas-meli/desafio-goweb-robertogattas/internal/products"
 	"github.com/gin-gonic/gin"
 )
 
