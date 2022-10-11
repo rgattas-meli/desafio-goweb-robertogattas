@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"github.com/rgattas-meli/desafio-goweb-robertogattas/pkg/domain"
 	"github.com/rgattas-meli/desafio-goweb-robertogattas/cmd/server/handler"
-	"github.com/rgattas-meli/desafio-goweb-robertogattas/internal/products"
+	"github.com/rgattas-meli/desafio-goweb-robertogattas/internal/tickets"
 	"github.com/gin-gonic/gin"
 )
 

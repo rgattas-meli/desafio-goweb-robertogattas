@@ -1,7 +1,7 @@
 package tickets
 
 import (
-	
+	"github.com/rgattas-meli/desafio-goweb-robertogattas/pkg/domain"
 	"context"
 	"fmt"
 

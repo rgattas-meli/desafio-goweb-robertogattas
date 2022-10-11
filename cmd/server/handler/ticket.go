@@ -3,7 +3,7 @@ package handler
 import (
 	"net/http"
 
-	"desafio-go-web/internal/tickets"
+	"github.com/rgattas-meli/desafio-goweb-robertogattas/internal/tickets"
 	"github.com/gin-gonic/gin"
 )
 
