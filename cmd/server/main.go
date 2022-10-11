@@ -1,12 +1,15 @@
 package main
 
 import (
+
 	"encoding/csv"
 	"fmt"
 	"os"
 	"strconv"
+	"github.com/rgattas-meli/desafio-goweb-robertogattas/desafio-go-web-master/pkg/domain"
+	"github.com/rgattas-meli/desafio-goweb-robertogattas/desafio-go-web-master/cmd/server/handler"
 
-	"desafio-go-web/internal/domain"
+	"github.com/rgattas-meli/desafio-goweb-robertogattas/desafio-go-web-master/internal/products"
 	"github.com/gin-gonic/gin"
 )
 
