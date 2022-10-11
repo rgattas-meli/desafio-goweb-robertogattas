@@ -8,7 +8,7 @@ import (
 type Service interface {
 	GetAll(ctx context.Context) ([]domain.Ticket, error)
 	GetTotalTickets(context.Context, string) ([]domain.Ticket, error)
-	AverageDestination(ctx context.Context, destination string)	(int, error)
+	AverageDestination(ctx context.Context, destination string)	(float64, error)
 
 }
 type service struct {
@@ -39,11 +39,14 @@ func (s *service) GetTotalTickets(ctx context.Context,name  string) ([]domain.Ti
 	return ps, nil
 }
 
-func (s *service) AverageDestination(ctx context.Context, destination string)	(int, error)	{
-	ps, err := s.repository.GetTicketsAvg(ctx , destination)
+func (s *service) AverageDestination(ctx context.Context, destination string)	(float64, error)	{
+	listAllTickets, err := s.repository.GetAll(ctx)
 	if err != nil {
-		return 0, err
+		return 0.0, err
 	}
-
-	return ps, nil
+	listTickets, err := s.repository.GetTicketByDestination(ctx, destination)
+	if err != nil {
+		return 0.0, err
+	}
+	return (float64(len(listTickets)) / float64(len(listAllTickets))) * 100 , nil
 }

@@ -1,41 +1,41 @@
 package main
 
 import (
-
 	"encoding/csv"
 	"fmt"
 	"os"
 	"strconv"
-	"github.com/rgattas-meli/desafio-goweb-robertogattas/pkg/domain"
+
+	"github.com/gin-gonic/gin"
 	"github.com/rgattas-meli/desafio-goweb-robertogattas/cmd/server/handler"
 	"github.com/rgattas-meli/desafio-goweb-robertogattas/internal/tickets"
-	"github.com/gin-gonic/gin"
+	"github.com/rgattas-meli/desafio-goweb-robertogattas/pkg/domain"
 )
 
 func main() {
 
 	// Cargo csv.
-	list, err := LoadTicketsFromFile("../../tickets.csv")
+	list, err := LoadTicketsFromFile("tickets.csv")
 	if err != nil {
 		panic("Couldn't load tickets")
 	}
-
-	r := gin.Default()
-	r.GET("/ping", func(c *gin.Context) { c.String(200, "pong") })
-	// Rutas a desarollar:
 	repo := tickets.NewRepository(list)
 	service := tickets.NewService(repo)
 	p := handler.NewService(service)
- 
-	
-	pr := r.Group("/ticket")
-	pr.GET("/getByCountry", p.GetTicketsByCountry())
-	pr.GET("/getAverage", p.AverageDestination())
+	r := gin.Default()
+	r.GET("/ping", func(c *gin.Context) { c.String(200, "pong") })
+	// Rutas a desarollar:
 
-	if err := r.Run(); err != nil {
+
+	pr := r.Group("/ticket")
+	{
+		pr.GET("/getByCountry/:dest", p.GetTicketsByCountry())
+		pr.GET("/getAverage/:dest", p.AverageDestination())
+	}
+	if err := r.Run(); err != nil	{
 		panic(err)
 	}
-	
+	r.Run()
 
 }
 
