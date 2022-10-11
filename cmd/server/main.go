@@ -23,12 +23,19 @@ func main() {
 	r := gin.Default()
 	r.GET("/ping", func(c *gin.Context) { c.String(200, "pong") })
 	// Rutas a desarollar:
+	repo := tickets.NewRepository(list)
+	service := tickets.NewService(repo)
+	p := handler.NewService(service)
+ 
 	
-	// GET - “/ticket/getByCountry/:dest”
-	// GET - “/ticket/getAverage/:dest”
+	pr := r.Group("/ticket")
+	pr.GET("/getByCountry", p.GetTicketsByCountry())
+	pr.GET("/getAverage", p.AverageDestination())
+
 	if err := r.Run(); err != nil {
 		panic(err)
 	}
+	
 
 }
 
